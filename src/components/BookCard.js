@@ -8,7 +8,6 @@ function BookCard(props) {
     height: 193,
     backgroundImage: `url(${book.imageLinks.thumbnail})`
   };
-  const authors = book.authors.join(' ');
 
   return (
     <div className="book">
@@ -24,8 +23,7 @@ function BookCard(props) {
         </div>
       </div>
       <div className="book-title">{book.title}</div>
-      {/*TODO: Use a list for the authors?*/}
-      <div className="book-authors">{authors}</div>
+      <div className="book-authors">{book.authors}</div>
     </div>
   );
 }
