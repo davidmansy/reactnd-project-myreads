@@ -16,7 +16,9 @@ function Bookshelf(props) {
         ) : shelfBooks.length > 0 ? (
           <BooksGrid books={shelfBooks} handleShelfChange={handleShelfChange} />
         ) : (
-          <div>There are not books available in this shelf</div>
+          <div className="bookshelf-empty">
+            There are not books available in this shelf
+          </div>
         )}
       </div>
     </div>

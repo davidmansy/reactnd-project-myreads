@@ -46,6 +46,11 @@ body,
   text-align: center;
 }
 
+.bookshelf-empty {
+  font-size: 1.2em;
+  padding: 10px;
+}
+
 .open-search {
   position: fixed;
   right: 25px;
