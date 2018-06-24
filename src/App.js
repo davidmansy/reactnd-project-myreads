@@ -20,6 +20,18 @@ class BooksApp extends React.Component {
     });
   }
 
+  handleShelfChange = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(jsonRes => {
+      this.setState(currentState => {
+        const updatedBook = currentState.books.find(b => {
+          return b.id === book.id;
+        });
+        updatedBook.shelf = shelf;
+        return currentState;
+      });
+    });
+  };
+
   render() {
     const { shelves, books } = this.state;
     return (
@@ -27,7 +39,13 @@ class BooksApp extends React.Component {
         <Route
           exact
           path="/"
-          render={() => <ListBooks shelves={shelves} books={books} />}
+          render={() => (
+            <ListBooks
+              shelves={shelves}
+              books={books}
+              handleShelfChange={this.handleShelfChange}
+            />
+          )}
         />
         <Route path="/search" render={() => <SearchBooks />} />
       </div>

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import ShelMoveMenu from './ShelfMoveMenu';
 
 class BookCard extends Component {
+  handleShelfChange = event => {
+    this.props.handleShelfChange(this.props.book, event.target.value);
+  };
+
   render() {
     const { book } = this.props;
     const bookCoverStyle = {
@@ -16,7 +20,10 @@ class BookCard extends Component {
         <div className="book-top">
           <div className="book-cover" style={bookCoverStyle} />
           <div className="book-shelf-changer">
-            <ShelMoveMenu />
+            <ShelMoveMenu
+              selectedShelf={book.shelf}
+              handleChange={this.handleShelfChange}
+            />
           </div>
         </div>
         <div className="book-title">{book.title}</div>
