@@ -4,11 +4,9 @@ import './styles/App.css';
 import SearchBooks from './components/SearchBooks';
 import ListBooks from './components/ListBooks';
 import { Route } from 'react-router-dom';
-import data from './data/data.json';
 
 class BooksApp extends React.Component {
   state = {
-    shelves: data.shelves,
     books: []
   };
 
@@ -33,7 +31,8 @@ class BooksApp extends React.Component {
   };
 
   render() {
-    const { shelves, books } = this.state;
+    const { books } = this.state;
+
     return (
       <div className="app">
         <Route
@@ -41,7 +40,6 @@ class BooksApp extends React.Component {
           path="/"
           render={() => (
             <ListBooks
-              shelves={shelves}
               books={books}
               handleShelfChange={this.handleShelfChange}
             />

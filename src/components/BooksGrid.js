@@ -3,6 +3,7 @@ import BookCard from './BookCard';
 
 function BooksGrid(props) {
   const { books, handleShelfChange } = props;
+
   return (
     <ol className="books-grid">
       {books.map(book => {
