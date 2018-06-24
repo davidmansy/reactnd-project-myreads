@@ -1,18 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ListBooksHeader from './ListBooksHeader';
 import Bookshelves from './Bookshelves';
+import OpenSearch from './OpenSearch';
 
 function ListBooks(props) {
-  const { books, handleShelfChange } = props;
+  const { books, handleShelfChange, loading } = props;
 
   return (
     <div className="list-books">
       <ListBooksHeader />
-      <Bookshelves books={books} handleShelfChange={handleShelfChange} />
-      <div className="open-search">
-        <Link to="/search">Add a book</Link>
-      </div>
+      <Bookshelves
+        books={books}
+        handleShelfChange={handleShelfChange}
+        loading={loading}
+      />
+      <OpenSearch />
     </div>
   );
 }

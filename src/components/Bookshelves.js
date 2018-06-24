@@ -4,7 +4,7 @@ import Bookshelf from './Bookshelf';
 
 function Bookshelves(props) {
   const shelves = data.shelves;
-  const { books, handleShelfChange } = props;
+  const { books, handleShelfChange, loading } = props;
 
   return (
     <div className="list-books-content">
@@ -15,6 +15,7 @@ function Bookshelves(props) {
             shelf={shelf}
             books={books}
             handleShelfChange={handleShelfChange}
+            loading={loading}
           />
         ))}
       </div>

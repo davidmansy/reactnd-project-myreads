@@ -7,19 +7,21 @@ import { Route } from 'react-router-dom';
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    loading: true
   };
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
       this.setState(() => ({
-        books
+        books,
+        loading: false
       }));
     });
   }
 
   handleShelfChange = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(jsonRes => {
+    BooksAPI.update(book, shelf).then(() => {
       this.setState(currentState => {
         const updatedBook = currentState.books.find(b => {
           return b.id === book.id;
@@ -31,7 +33,7 @@ class BooksApp extends React.Component {
   };
 
   render() {
-    const { books } = this.state;
+    const { books, loading } = this.state;
 
     return (
       <div className="app">
@@ -41,6 +43,7 @@ class BooksApp extends React.Component {
           render={() => (
             <ListBooks
               books={books}
+              loading={loading}
               handleShelfChange={this.handleShelfChange}
             />
           )}
