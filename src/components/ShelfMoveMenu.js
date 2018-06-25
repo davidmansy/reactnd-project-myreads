@@ -3,7 +3,7 @@ import data from '../data/data.json';
 
 function ShelfMoveMenu(props) {
   const shelves = data.shelves;
-  const { selectedShelf, handleChange } = props;
+  const { selectedShelf = 'none', handleChange } = props;
 
   return (
     <select value={selectedShelf} onChange={handleChange}>

@@ -3,10 +3,11 @@ import ShelMoveMenu from './ShelfMoveMenu';
 
 function BookCard(props) {
   const { book, handleShelfChange } = props;
+  const thumbnail = book.imageLinks ? book.imageLinks.thumbnail : null;
   const bookCoverStyle = {
     width: 128,
     height: 193,
-    backgroundImage: `url(${book.imageLinks.thumbnail})`
+    backgroundImage: `url(${thumbnail})`
   };
 
   return (
