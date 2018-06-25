@@ -20,27 +20,23 @@ class SearchBooks extends Component {
     this._isMounted = false;
   }
 
+  onHandleInputChange = query => {
+    this.setState({ query, books: [], isLoading: false, error: null }, () => {
+      this.search(query);
+    });
+  };
+
   search = debounce(400, query => {
+    //Call API only if query string is not empty
     if (query.length) {
-      //No need to call API if no query
       this.setState({ isLoading: true }, () => {
         BooksAPI.search(query).then(books => {
           if (this._isMounted) {
-            //Based on how the API handles error i.e. no error status received
+            //Condition based on how the API handles error i.e. no error status received
             if (!books.error) {
-              const { bookCatMap } = this.props;
-              books.forEach(book => {
-                if (bookCatMap[book.id]) {
-                  book.shelf = bookCatMap[book.id];
-                }
-              });
-              this.setState(() => ({
-                books,
-                isLoading: false,
-                error: null
-              }));
+              this.handleSearchSuccess(books);
             } else {
-              this.setState({ error: books.error, isLoading: false });
+              this.handleSearchFailure(books.error);
             }
           }
         });
@@ -48,9 +44,26 @@ class SearchBooks extends Component {
     }
   });
 
-  onHandleInputChange = query => {
-    this.setState({ query, books: [], isLoading: false, error: null }, () => {
-      this.search(query);
+  handleSearchSuccess = books => {
+    const catBooks = this.addBooksCategory(books);
+    this.setState(() => ({
+      books: catBooks,
+      isLoading: false,
+      error: null
+    }));
+  };
+
+  handleSearchFailure = errorMessage => {
+    this.setState({ error: errorMessage, isLoading: false });
+  };
+
+  addBooksCategory = books => {
+    const { bookCatMap } = this.props;
+    return books.map(book => {
+      if (bookCatMap[book.id]) {
+        book.shelf = bookCatMap[book.id];
+      }
+      return book;
     });
   };
 
