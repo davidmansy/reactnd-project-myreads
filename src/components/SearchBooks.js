@@ -28,6 +28,12 @@ class SearchBooks extends Component {
           if (this._isMounted) {
             //Based on how the API handles error i.e. no error status received
             if (!books.error) {
+              const { bookCatMap } = this.props;
+              books.forEach(book => {
+                if (bookCatMap[book.id]) {
+                  book.shelf = bookCatMap[book.id];
+                }
+              });
               this.setState(() => ({
                 books,
                 isLoading: false,
