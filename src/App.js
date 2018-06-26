@@ -8,45 +8,52 @@ import { Route } from 'react-router-dom';
 class BooksApp extends React.Component {
   state = {
     books: [],
-    loading: true,
+    isLoading: false,
     bookCatMap: {} //Built to speed up the data reconciliation with the search results
   };
 
-  //TODO: Use Reduce to build the object
   initBookCatMap(books) {
-    const bookCatMap = {};
-    books.forEach(book => {
-      bookCatMap[book.id] = book.shelf;
-    });
-    return bookCatMap;
+    return books.reduce((memo, book) => {
+      memo[book.id] = book.shelf;
+      return memo;
+    }, {});
   }
 
-  componentDidMount() {
-    BooksAPI.getAll().then(books => {
-      const bookCatMap = this.initBookCatMap(books);
-      this.setState({
-        books,
-        loading: false,
-        bookCatMap
-      });
-    });
-  }
-
-  handleShelfChange = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(() => {
-      this.setState(currentState => {
-        const updatedBook = currentState.books.find(b => {
-          return b.id === book.id;
+  getAllBooks = () => {
+    this.setState({ isLoading: true }, () => {
+      BooksAPI.getAll().then(books => {
+        this.setState({
+          books,
+          isLoading: false,
+          bookCatMap: this.initBookCatMap(books)
         });
-        updatedBook.shelf = shelf;
-        currentState.bookCatMap[updatedBook.id] = shelf; //Update the bookCatMap
-        return currentState;
       });
     });
   };
 
+  componentDidMount() {
+    this.getAllBooks();
+  }
+
+  handleShelfChange = (book, shelf) => {
+    this.setState({ isLoading: true }, () => {
+      BooksAPI.update(book, shelf).then(() => {
+        this.setState(currentState => {
+          currentState.books.find(b => b.id === book.id).shelf = shelf;
+          currentState.bookCatMap[book.id] = shelf;
+          currentState.isLoading = false;
+          return currentState;
+        });
+      });
+    });
+  };
+
+  onHandleCloseSearch = () => {
+    this.getAllBooks();
+  };
+
   render() {
-    const { books, loading, bookCatMap } = this.state;
+    const { books, isLoading, bookCatMap } = this.state;
 
     return (
       <div className="app">
@@ -56,14 +63,19 @@ class BooksApp extends React.Component {
           render={() => (
             <ListBooks
               books={books}
-              loading={loading}
+              isLoading={isLoading}
               handleShelfChange={this.handleShelfChange}
             />
           )}
         />
         <Route
           path="/search"
-          render={() => <SearchBooks bookCatMap={bookCatMap} />}
+          render={() => (
+            <SearchBooks
+              bookCatMap={bookCatMap}
+              onHandleClose={this.onHandleCloseSearch}
+            />
+          )}
         />
       </div>
     );

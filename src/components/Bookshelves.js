@@ -4,20 +4,23 @@ import Bookshelf from './Bookshelf';
 
 function Bookshelves(props) {
   const shelves = data.shelves;
-  const { books, handleShelfChange, loading } = props;
+  const { books, handleShelfChange, isLoading } = props;
 
   return (
     <div className="list-books-content">
       <div>
-        {shelves.map(shelf => (
-          <Bookshelf
-            key={shelf.id}
-            shelf={shelf}
-            books={books}
-            handleShelfChange={handleShelfChange}
-            loading={loading}
-          />
-        ))}
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          shelves.map(shelf => (
+            <Bookshelf
+              key={shelf.id}
+              shelf={shelf}
+              books={books}
+              handleShelfChange={handleShelfChange}
+            />
+          ))
+        )}
       </div>
     </div>
   );

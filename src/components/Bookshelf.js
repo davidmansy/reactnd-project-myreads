@@ -2,7 +2,7 @@ import React from 'react';
 import BooksGrid from './BooksGrid';
 
 function Bookshelf(props) {
-  const { shelf, books, handleShelfChange, loading } = props;
+  const { shelf, books, handleShelfChange } = props;
   const shelfBooks = books.filter(book => {
     return book.shelf === shelf.id;
   });
@@ -11,9 +11,7 @@ function Bookshelf(props) {
     <div className="bookshelf">
       <h2 className="bookshelf-title">{shelf.title}</h2>
       <div className="bookshelf-books">
-        {loading ? (
-          <div>Loading...</div>
-        ) : shelfBooks.length > 0 ? (
+        {shelfBooks.length > 0 ? (
           <BooksGrid books={shelfBooks} handleShelfChange={handleShelfChange} />
         ) : (
           <div className="bookshelf-empty">

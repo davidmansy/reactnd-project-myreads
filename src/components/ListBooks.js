@@ -4,7 +4,7 @@ import Bookshelves from './Bookshelves';
 import OpenSearch from './OpenSearch';
 
 function ListBooks(props) {
-  const { books, handleShelfChange, loading } = props;
+  const { books, handleShelfChange, isLoading } = props;
 
   return (
     <div className="list-books">
@@ -12,7 +12,7 @@ function ListBooks(props) {
       <Bookshelves
         books={books}
         handleShelfChange={handleShelfChange}
-        loading={loading}
+        isLoading={isLoading}
       />
       <OpenSearch />
     </div>

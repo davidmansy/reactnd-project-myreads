@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import SearchBooksBar from './SearchBooksBar';
 import * as BooksAPI from '../BooksAPI';
 import { debounce } from 'throttle-debounce';
-import BooksGrid from './BooksGrid';
+import SearchBooksResults from './SearchBooksResults';
 
 class SearchBooks extends Component {
   state = {
     query: '',
     books: [],
     isLoading: false,
-    error: null
+    error: null,
+    shelfHasBeenUpdated: false
   };
 
   componentDidMount() {
@@ -45,9 +46,8 @@ class SearchBooks extends Component {
   });
 
   handleSearchSuccess = books => {
-    const catBooks = this.addBooksCategory(books);
     this.setState(() => ({
-      books: catBooks,
+      books: this.addBooksCategory(books),
       isLoading: false,
       error: null
     }));
@@ -67,6 +67,22 @@ class SearchBooks extends Component {
     });
   };
 
+  handleShelfChange = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(() => {
+      this.setState(currentState => {
+        currentState.books.find(b => b.id === book.id).shelf = shelf;
+        currentState.shelfHasBeenUpdated = true;
+        return currentState;
+      });
+    });
+  };
+
+  onHandleClose = () => {
+    if (this.state.shelfHasBeenUpdated) {
+      this.props.onHandleClose();
+    }
+  };
+
   render() {
     const { query, books, error, isLoading } = this.state;
 
@@ -77,12 +93,14 @@ class SearchBooks extends Component {
           onHandleChange={event => {
             this.onHandleInputChange(event.target.value);
           }}
+          onHandleClose={this.onHandleClose}
         />
-        <div className="search-books-results">
-          {error && <div>Uh oh! Something went wrong: {error}.</div>}
-          {isLoading && <div>Loading...</div>}
-          {!!books.length && <BooksGrid books={books} />}
-        </div>
+        <SearchBooksResults
+          error={error}
+          isLoading={isLoading}
+          books={books}
+          handleShelfChange={this.handleShelfChange}
+        />
       </div>
     );
   }
