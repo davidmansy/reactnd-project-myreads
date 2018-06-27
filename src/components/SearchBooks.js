@@ -9,8 +9,7 @@ class SearchBooks extends Component {
     query: '',
     books: [],
     isLoading: false,
-    error: null,
-    shelfHasBeenUpdated: false
+    error: null
   };
 
   componentDidMount() {
@@ -47,7 +46,7 @@ class SearchBooks extends Component {
 
   handleSearchSuccess = books => {
     this.setState(() => ({
-      books: this.addBooksCategory(books),
+      books: this.assignCategory(books),
       isLoading: false,
       error: null
     }));
@@ -57,30 +56,20 @@ class SearchBooks extends Component {
     this.setState({ error: errorMessage, isLoading: false });
   };
 
-  addBooksCategory = books => {
-    const { bookCatMap } = this.props;
+  assignCategory = books => {
     return books.map(book => {
-      if (bookCatMap[book.id]) {
-        book.shelf = bookCatMap[book.id];
-      }
+      const bookWithCat = this.props.booksWithCat.find(b => b.id === book.id);
+      book.shelf = bookWithCat ? bookWithCat.shelf : 'none';
       return book;
     });
   };
 
   handleShelfChange = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(() => {
-      this.setState(currentState => {
-        currentState.books.find(b => b.id === book.id).shelf = shelf;
-        currentState.shelfHasBeenUpdated = true;
-        return currentState;
-      });
+    this.setState(currentState => {
+      currentState.books.find(b => b.id === book.id).shelf = shelf;
+      return currentState;
     });
-  };
-
-  onHandleClose = () => {
-    if (this.state.shelfHasBeenUpdated) {
-      this.props.onHandleClose();
-    }
+    this.props.handleShelfChange(book, shelf);
   };
 
   render() {
@@ -93,7 +82,6 @@ class SearchBooks extends Component {
           onHandleChange={event => {
             this.onHandleInputChange(event.target.value);
           }}
-          onHandleClose={this.onHandleClose}
         />
         <SearchBooksResults
           error={error}

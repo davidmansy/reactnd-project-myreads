@@ -8,24 +8,15 @@ import { Route } from 'react-router-dom';
 class BooksApp extends React.Component {
   state = {
     books: [],
-    isLoading: false,
-    bookCatMap: {} //Built to speed up the data reconciliation with the search results
+    isLoading: false
   };
-
-  initBookCatMap(books) {
-    return books.reduce((memo, book) => {
-      memo[book.id] = book.shelf;
-      return memo;
-    }, {});
-  }
 
   getAllBooks = () => {
     this.setState({ isLoading: true }, () => {
       BooksAPI.getAll().then(books => {
         this.setState({
           books,
-          isLoading: false,
-          bookCatMap: this.initBookCatMap(books)
+          isLoading: false
         });
       });
     });
@@ -36,24 +27,15 @@ class BooksApp extends React.Component {
   }
 
   handleShelfChange = (book, shelf) => {
-    this.setState({ isLoading: true }, () => {
-      BooksAPI.update(book, shelf).then(() => {
-        this.setState(currentState => {
-          currentState.books.find(b => b.id === book.id).shelf = shelf;
-          currentState.bookCatMap[book.id] = shelf;
-          currentState.isLoading = false;
-          return currentState;
-        });
-      });
+    this.setState(currentState => {
+      currentState.books.find(b => b.id === book.id).shelf = shelf;
+      return currentState;
     });
-  };
-
-  onHandleCloseSearch = () => {
-    this.getAllBooks();
+    BooksAPI.update(book, shelf);
   };
 
   render() {
-    const { books, isLoading, bookCatMap } = this.state;
+    const { books, isLoading } = this.state;
 
     return (
       <div className="app">
@@ -72,8 +54,8 @@ class BooksApp extends React.Component {
           path="/search"
           render={() => (
             <SearchBooks
-              bookCatMap={bookCatMap}
-              onHandleClose={this.onHandleCloseSearch}
+              booksWithCat={books}
+              handleShelfChange={this.handleShelfChange}
             />
           )}
         />
