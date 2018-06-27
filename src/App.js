@@ -1,7 +1,7 @@
 import React from 'react';
 import * as BooksAPI from './BooksAPI';
 import './styles/App.css';
-import SearchBooks from './components/SearchBooks';
+import SearchBooks from './components/Search/SearchBooks';
 import ListBooks from './components/ListBooks';
 import { Route } from 'react-router-dom';
 
@@ -28,7 +28,12 @@ class BooksApp extends React.Component {
 
   handleShelfChange = (book, shelf) => {
     this.setState(currentState => {
-      currentState.books.find(b => b.id === book.id).shelf = shelf;
+      const updatedBook = currentState.books.find(b => b.id === book.id);
+      if (updatedBook) {
+        updatedBook.shelf = shelf;
+      } else {
+        currentState.books.push(book);
+      }
       return currentState;
     });
     BooksAPI.update(book, shelf);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBooksBar from './SearchBooksBar';
-import * as BooksAPI from '../BooksAPI';
+import * as BooksAPI from '../../BooksAPI';
 import { debounce } from 'throttle-debounce';
 import SearchBooksResults from './SearchBooksResults';
 
