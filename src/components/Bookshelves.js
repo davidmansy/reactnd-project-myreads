@@ -1,6 +1,7 @@
 import React from 'react';
 import data from '../data/data.json';
 import Bookshelf from './Bookshelf';
+import Loading from './Loading/Loading';
 
 function Bookshelves(props) {
   const shelves = data.shelves;
@@ -10,7 +11,7 @@ function Bookshelves(props) {
     <div className="list-books-content">
       <div>
         {isLoading ? (
-          <div>Loading...</div>
+          <Loading />
         ) : (
           shelves.map(shelf => (
             <Bookshelf

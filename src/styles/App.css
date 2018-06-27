@@ -111,6 +111,14 @@ body,
   padding: 80px 10px 20px;
 }
 
+/* spinner */
+.spinner-container {
+  align-items: center;
+  display: flex;
+  height: 600px;
+  justify-content: center;
+}
+
 /* books grid */
 
 .books-grid {

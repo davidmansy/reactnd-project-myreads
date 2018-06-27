@@ -1,13 +1,15 @@
 import React from 'react';
 import BooksGrid from './BooksGrid';
+import TechnicalError from './TechnicalError';
+import Loading from './Loading/Loading';
 
 function SearchBooksResults(props) {
   const { error, isLoading, books, handleShelfChange } = props;
 
   return (
     <div className="search-books-results">
-      {error && <div>Uh oh! Something went wrong: {error}.</div>}
-      {isLoading && <div>Loading...</div>}
+      {error && <TechnicalError error={error} />}
+      {isLoading && <Loading />}
       {!!books.length && (
         <BooksGrid books={books} handleShelfChange={handleShelfChange} />
       )}
