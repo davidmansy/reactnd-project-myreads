@@ -12,7 +12,11 @@ function Bookshelf(props) {
       <h3 className="bookshelf-title">{shelf.title}</h3>
       <div className="bookshelf-books">
         {shelfBooks.length > 0 ? (
-          <BooksGrid books={shelfBooks} handleShelfChange={handleShelfChange} />
+          <BooksGrid
+            books={shelfBooks}
+            handleShelfChange={handleShelfChange}
+            shelfId={shelf.id}
+          />
         ) : (
           <div className="bookshelf-empty">
             There are not books available in this shelf
