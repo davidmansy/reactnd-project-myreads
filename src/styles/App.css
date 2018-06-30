@@ -18,21 +18,21 @@ body,
 /* main page */
 
 .list-books-title {
-  padding: 10px 0;
   background: rgb(2, 106, 167);
   font-family: 'Pacifico', cursive;
+  padding: 10px 0;
   text-align: center;
 }
 
 .list-books-title h1 {
+  color: rgb(112, 176, 219);
   font-weight: 400;
   margin: 0;
-  color: rgb(112, 176, 219);
 }
 
 .list-books-content {
-  padding: 0 0 80px;
   flex: 1;
+  padding: 0 0 80px;
 }
 
 .bookshelves {
@@ -41,12 +41,11 @@ body,
 
 .bookshelf {
   background-color: rgb(226, 228, 230);
+  border-radius: 5px;
   color: #333;
   margin: 15px;
-  padding: 10px;
-  border-radius: 5px;
-  padding: 10px;
   min-width: 200px;
+  padding: 10px;
 }
 
 .bookshelf-title {
@@ -64,23 +63,23 @@ body,
 }
 
 .open-search {
+  bottom: 25px;
   position: fixed;
   right: 25px;
-  bottom: 25px;
 }
 
 .open-search a {
-  display: block;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
   background: #00c2e0;
   background-image: url('../icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
+  border-radius: 50%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: block;
   font-size: 0;
+  height: 50px;
+  width: 50px;
 }
 
 /* search page */
@@ -151,6 +150,11 @@ body,
   display: flex;
   height: 600px;
   justify-content: center;
+  width: 100%;
+}
+
+.spinner {
+  width: 50px;
 }
 
 /* books grid */
