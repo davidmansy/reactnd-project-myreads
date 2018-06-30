@@ -9,7 +9,7 @@ function Bookshelf(props) {
 
   return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">{shelf.title}</h2>
+      <h3 className="bookshelf-title">{shelf.title}</h3>
       <div className="bookshelf-books">
         {shelfBooks.length > 0 ? (
           <BooksGrid books={shelfBooks} handleShelfChange={handleShelfChange} />

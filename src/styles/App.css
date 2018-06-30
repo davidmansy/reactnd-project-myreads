@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:700|Pacifico');
+
 html,
 body,
 .root {
@@ -8,20 +10,23 @@ body {
 }
 body,
 .app {
-  background: white;
+  background: rgb(0, 121, 191);
+  color: white;
+  font-family: 'Amatic SC', cursive;
 }
 
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: rgb(2, 106, 167);
+  font-family: 'Pacifico', cursive;
   text-align: center;
 }
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
-  color: white;
+  color: rgb(112, 176, 219);
 }
 
 .list-books-content {
@@ -29,19 +34,31 @@ body,
   flex: 1;
 }
 
-.bookshelf {
-  padding: 0 10px 20px;
+.bookshelves {
+  display: flex;
 }
 
-@media (min-width: 600px) {
-  .bookshelf {
-    padding: 0 20px 40px;
-  }
+.bookshelf {
+  background-color: rgb(226, 228, 230);
+  color: #333;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  min-width: 200px;
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  font-family: 'Pacifico', cursive;
+  margin: 0;
 }
+
+/* @media (min-width: 600px) {
+  .bookshelf {
+    padding: 10px;
+  }
+} */
+
 .bookshelf-books {
   text-align: center;
 }
@@ -56,12 +73,13 @@ body,
   right: 25px;
   bottom: 25px;
 }
+
 .open-search a {
   display: block;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: #00c2e0;
   background-image: url('../icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -73,6 +91,7 @@ body,
 /* search page */
 
 .search-books-bar {
+  background-color: rgb(2, 106, 167);
   position: fixed;
   width: 100%;
   top: 0;
@@ -80,17 +99,37 @@ body,
   z-index: 5;
   display: flex;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
+  align-items: center;
 }
+
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
+  border-radius: 5px;
 }
+
 .search-books-bar input {
-  width: 100%;
-  padding: 15px 10px;
-  font-size: 1.25em;
+  background-color: rgb(112, 176, 219);
   border: none;
+  border-radius: 5px;
+  color: black;
+  font-size: 1.25em;
+  margin: 10px;
   outline: none;
+  padding: 10px;
+  width: 98%;
+}
+
+.search-books-bar input::placeholder {
+  color: rgb(2, 106, 167);
+}
+
+.search-books-bar input:focus {
+  background-color: white;
+  color: black;
+}
+
+.search-books-bar input:focus::placeholder {
+  color: black;
 }
 
 .close-search {
@@ -99,7 +138,6 @@ body,
   left: 15px;
   width: 50px;
   height: 53px;
-  background: white;
   background-image: url('../icons/arrow-back.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -125,35 +163,48 @@ body,
   list-style-type: none;
   padding: 0;
   margin: 0;
-
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
 .books-grid li {
-  padding: 10px 15px;
+  padding: 10px;
   text-align: left;
 }
 
 .book {
-  width: 140px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
 }
-.book-title,
-.book-authors {
-  font-size: 0.8em;
+
+.book.active-book {
+  background-color: #edeff0;
 }
+
+.book-details-container {
+  display: flex;
+  flex-direction: column;
+  height: 270px;
+  overflow: auto;
+  width: 130px;
+}
+
 .book-title {
+  font-size: 1.2m;
   margin-top: 10px;
 }
+
 .book-authors {
   color: #999;
+  font-size: 0.9em;
 }
 
 .book-top {
-  position: relative;
+  align-self: center;
   height: 200px;
-  display: flex;
-  align-items: flex-end;
+  position: relative;
 }
 
 .book-shelf-changer {
@@ -163,13 +214,14 @@ body,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: rgb(2, 106, 167);
   background-image: url('../icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
+
 .book-shelf-changer select {
   width: 100%;
   height: 100%;
@@ -182,7 +234,10 @@ body,
 .book-cover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: #eee;
+  border: 5px solid white;
+  border-radius: 5px;
 }
+
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;

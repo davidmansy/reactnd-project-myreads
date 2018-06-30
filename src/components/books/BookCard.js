@@ -12,19 +12,21 @@ function BookCard(props) {
 
   return (
     <div className="book">
-      <div className="book-top">
-        <div className="book-cover" style={bookCoverStyle} />
-        <div className="book-shelf-changer">
-          <ShelMoveMenu
-            selectedShelf={book.shelf}
-            handleChange={event => {
-              handleShelfChange(book, event.target.value);
-            }}
-          />
+      <div className="book-details-container">
+        <div className="book-top">
+          <div className="book-cover" style={bookCoverStyle} />
+          <div className="book-shelf-changer">
+            <ShelMoveMenu
+              selectedShelf={book.shelf}
+              handleChange={event => {
+                handleShelfChange(book, event.target.value);
+              }}
+            />
+          </div>
         </div>
+        <div className="book-title">{book.title}</div>
+        <div className="book-authors">{book.authors}</div>
       </div>
-      <div className="book-title">{book.title}</div>
-      <div className="book-authors">{book.authors}</div>
     </div>
   );
 }

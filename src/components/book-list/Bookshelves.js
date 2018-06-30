@@ -9,7 +9,7 @@ function Bookshelves(props) {
 
   return (
     <div className="list-books-content">
-      <div>
+      <div className="bookshelves">
         {isLoading ? (
           <Loading />
         ) : (

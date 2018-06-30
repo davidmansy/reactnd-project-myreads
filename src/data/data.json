@@ -1,12 +1,12 @@
 {
   "shelves": [
     {
-      "id": "currentlyReading",
-      "title": "Currently Reading"
-    },
-    {
       "id": "wantToRead",
       "title": "Want to Read"
+    },
+    {
+      "id": "currentlyReading",
+      "title": "Currently Reading"
     },
     {
       "id": "read",
