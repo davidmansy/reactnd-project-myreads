@@ -1,7 +1,7 @@
 import React from 'react';
 import ListBooksHeader from './ListBooksHeader';
 import Bookshelves from './Bookshelves';
-import OpenSearch from './Search/OpenSearch';
+import OpenSearch from '../book-search/OpenSearch';
 
 function ListBooks(props) {
   const { books, handleShelfChange, isLoading } = props;

@@ -1,7 +1,7 @@
 import React from 'react';
-import BooksGrid from '../BooksGrid';
-import TechnicalError from '../Common/TechnicalError';
-import Loading from '../Common/Loading/Loading';
+import BooksGrid from '../books/BooksGrid';
+import TechnicalError from '../common/TechnicalError';
+import Loading from '../common/Loading/index';
 
 function SearchBooksResults(props) {
   const { error, isLoading, books, handleShelfChange } = props;

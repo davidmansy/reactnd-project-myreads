@@ -1,7 +1,7 @@
 import React from 'react';
-import data from '../data/data.json';
+import data from '../../data/data.json';
 import Bookshelf from './Bookshelf';
-import Loading from './Common/Loading/Loading';
+import Loading from '../common/Loading/index';
 
 function Bookshelves(props) {
   const shelves = data.shelves;

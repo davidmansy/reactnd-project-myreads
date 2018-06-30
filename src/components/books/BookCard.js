@@ -1,5 +1,5 @@
 import React from 'react';
-import ShelMoveMenu from './ShelfMoveMenu';
+import ShelMoveMenu from '../common/ShelfMoveMenu';
 
 function BookCard(props) {
   const { book, handleShelfChange } = props;

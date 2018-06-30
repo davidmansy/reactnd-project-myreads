@@ -1,5 +1,5 @@
 import React from 'react';
-import BooksGrid from './BooksGrid';
+import BooksGrid from '../books/BooksGrid';
 
 function Bookshelf(props) {
   const { shelf, books, handleShelfChange } = props;
