@@ -4,6 +4,8 @@ import * as BooksAPI from '../../data/BooksAPI';
 import { debounce } from 'throttle-debounce';
 import SearchBooksResults from './SearchBooksResults';
 
+const NO_CATEGORY = 'none';
+
 class SearchBooks extends Component {
   state = {
     query: '',
@@ -59,7 +61,7 @@ class SearchBooks extends Component {
   assignCategory = books => {
     return books.map(book => {
       const bookWithCat = this.props.booksWithCat.find(b => b.id === book.id);
-      book.shelf = bookWithCat ? bookWithCat.shelf : 'none';
+      book.shelf = bookWithCat ? bookWithCat.shelf : NO_CATEGORY;
       return book;
     });
   };

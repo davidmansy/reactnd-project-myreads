@@ -5,6 +5,9 @@ import SearchBooks from './components/book-search/SearchBooks';
 import ListBooks from './components/book-list/ListBooks';
 import { Route } from 'react-router-dom';
 
+const ROOT_PATH = '/';
+const SEARCH_PATH = '/search';
+
 class BooksApp extends React.Component {
   state = {
     books: [],
@@ -46,7 +49,7 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route
           exact
-          path="/"
+          path={ROOT_PATH}
           render={() => (
             <ListBooks
               books={books}
@@ -56,7 +59,7 @@ class BooksApp extends React.Component {
           )}
         />
         <Route
-          path="/search"
+          path={SEARCH_PATH}
           render={() => (
             <SearchBooks
               booksWithCat={books}
