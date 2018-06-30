@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import ShelMoveMenu from '../common/ShelfMoveMenu';
 
 const BOOK_DETAILS_HIDE_CLASS = 'book-details-hidden';
-const BOOK_ID = 'id';
-const DRAG_AND_DROP_MOVE_EFFECT = 'move';
+const DATA_TRANSFER_ID = 'id';
 
 class BookCard extends Component {
   state = {
-    hideBook: false
+    hideBook: false,
+    active: false
   };
 
   onDragStart = (e, id) => {
-    e.dataTransfer.setData(BOOK_ID, id);
-    e.dataTransfer.effectAllowed = DRAG_AND_DROP_MOVE_EFFECT;
-    e.dataTransfer.dropEffect = DRAG_AND_DROP_MOVE_EFFECT;
+    e.dataTransfer.setData(DATA_TRANSFER_ID, id);
     setTimeout(() => {
       this.setState({
         hideBook: true
@@ -27,8 +25,24 @@ class BookCard extends Component {
     });
   };
 
+  onMouseEnter = e => {
+    if (this.props.draggable === 'true') {
+      this.setState({
+        active: true
+      });
+    }
+  };
+
+  onMouseLeave = e => {
+    if (this.props.draggable === 'true') {
+      this.setState({
+        active: false
+      });
+    }
+  };
+
   render() {
-    const { book, handleShelfChange } = this.props;
+    const { book, handleShelfChange, draggable = 'false' } = this.props;
     const thumbnail = book.imageLinks ? book.imageLinks.thumbnail : null;
     const bookCoverStyle = {
       width: 128,
@@ -36,15 +50,18 @@ class BookCard extends Component {
       backgroundImage: `url(${thumbnail})`
     };
     const containerClass = this.state.hideBook ? BOOK_DETAILS_HIDE_CLASS : '';
+    const bookClass = this.state.active ? 'book-active' : '';
 
     return (
       <div
-        className="book"
-        draggable
+        className={`book ${bookClass}`}
         onDragStart={e => {
           this.onDragStart(e, book.id);
         }}
         onDragEnd={this.onDragEnd}
+        draggable={draggable}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
       >
         <div className={`book-details-container ${containerClass}`}>
           <div className="book-top">

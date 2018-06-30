@@ -16,6 +16,7 @@ function Bookshelf(props) {
             books={shelfBooks}
             handleShelfChange={handleShelfChange}
             shelfId={shelf.id}
+            draggable="true"
           />
         ) : (
           <div className="bookshelf-empty">

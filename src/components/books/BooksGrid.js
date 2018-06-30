@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import BookCard from './BookCard';
 
+const DATA_TRANSFER_ID = 'id';
+
 class BooksGrid extends Component {
   onDrop = e => {
     const { handleShelfChange, shelfId } = this.props;
-    const id = e.dataTransfer.getData('id');
+    const id = e.dataTransfer.getData(DATA_TRANSFER_ID);
     handleShelfChange({ id: id }, shelfId);
   };
 
   render() {
-    const { books, handleShelfChange } = this.props;
+    const { books, handleShelfChange, draggable } = this.props;
 
     return (
       <ol
@@ -20,7 +22,11 @@ class BooksGrid extends Component {
         {books.map(book => {
           return (
             <li key={book.id}>
-              <BookCard book={book} handleShelfChange={handleShelfChange} />
+              <BookCard
+                book={book}
+                handleShelfChange={handleShelfChange}
+                draggable={draggable}
+              />
             </li>
           );
         })}

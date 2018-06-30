@@ -23,6 +23,7 @@ body,
   font-family: 'Pacifico', cursive;
   text-align: center;
 }
+
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
@@ -105,7 +106,7 @@ body,
   background-color: rgb(112, 176, 219);
   border: none;
   border-radius: 5px;
-  color: black;
+  color: rgb(2, 106, 167);
   font-size: 1.25em;
   margin: 10px;
   outline: none;
@@ -140,6 +141,7 @@ body,
 }
 
 .search-books-results {
+  color: #333;
   padding: 80px 10px 20px;
 }
 
@@ -176,7 +178,7 @@ body,
   width: 150px;
 }
 
-.book:hover {
+.book-active {
   background-color: #00c2e0;
   cursor: pointer;
 }
@@ -194,7 +196,8 @@ body,
 }
 
 .book-title {
-  font-size: 1.2m;
+  font-size: 1.2em;
+  line-height: 1.2;
   margin-top: 10px;
 }
 
