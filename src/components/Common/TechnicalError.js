@@ -1,8 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function TechnicalError(props) {
-  const { error } = props;
-  return <div>Uh oh! Something went wrong: {error}.</div>;
+  const { errorMessage } = props;
+  return (
+    <div className="technical-error">
+      Uh oh! Something went wrong: {errorMessage}.
+    </div>
+  );
 }
+
+TechnicalError.propTypes = {
+  errorMessage: PropTypes.string.isRequired
+};
 
 export default TechnicalError;

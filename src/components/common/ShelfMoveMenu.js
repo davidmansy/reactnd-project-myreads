@@ -1,5 +1,6 @@
 import React from 'react';
 import data from '../../data/data.json';
+import PropTypes from 'prop-types';
 
 function ShelfMoveMenu(props) {
   const shelves = data.shelves;
@@ -21,5 +22,10 @@ function ShelfMoveMenu(props) {
     </select>
   );
 }
+
+ShelfMoveMenu.propTypes = {
+  selectedShelf: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired
+};
 
 export default ShelfMoveMenu;

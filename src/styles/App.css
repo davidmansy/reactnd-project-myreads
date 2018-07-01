@@ -144,7 +144,7 @@ body,
   padding: 80px 10px 20px;
 }
 
-/* spinner */
+/* common */
 .spinner-container {
   align-items: center;
   display: flex;
@@ -155,6 +155,10 @@ body,
 
 .spinner {
   width: 50px;
+}
+
+.technical-error {
+  font-size: 2em;
 }
 
 /* books grid */
@@ -195,7 +199,7 @@ body,
   width: 130px;
 }
 
-.book-details-hidden {
+.book-details-container-hidden {
   display: none;
 }
 

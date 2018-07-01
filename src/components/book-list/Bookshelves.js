@@ -2,6 +2,7 @@ import React from 'react';
 import data from '../../data/data.json';
 import Bookshelf from './Bookshelf';
 import Loading from '../common/Loading/index';
+import PropTypes from 'prop-types';
 
 function Bookshelves(props) {
   const shelves = data.shelves;
@@ -26,5 +27,11 @@ function Bookshelves(props) {
     </div>
   );
 }
+
+Bookshelves.propTypes = {
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleShelfChange: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
+};
 
 export default Bookshelves;

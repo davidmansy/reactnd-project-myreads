@@ -55,6 +55,7 @@ class BooksApp extends React.Component {
               books={books}
               isLoading={isLoading}
               handleShelfChange={this.handleShelfChange}
+              searchPath={SEARCH_PATH}
             />
           )}
         />
@@ -64,6 +65,7 @@ class BooksApp extends React.Component {
             <SearchBooks
               booksWithCat={books}
               handleShelfChange={this.handleShelfChange}
+              rootPath={ROOT_PATH}
             />
           )}
         />

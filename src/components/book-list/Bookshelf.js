@@ -1,5 +1,8 @@
 import React from 'react';
 import BooksGrid from '../books/BooksGrid';
+import PropTypes from 'prop-types';
+
+const DRAGGABLE_TRUTHY_VALUE = 'true';
 
 function Bookshelf(props) {
   const { shelf, books, handleShelfChange } = props;
@@ -16,7 +19,7 @@ function Bookshelf(props) {
             books={shelfBooks}
             handleShelfChange={handleShelfChange}
             shelfId={shelf.id}
-            draggable="true"
+            draggable={DRAGGABLE_TRUTHY_VALUE}
           />
         ) : (
           <div className="bookshelf-empty">
@@ -27,5 +30,11 @@ function Bookshelf(props) {
     </div>
   );
 }
+
+Bookshelf.propTypes = {
+  shelf: PropTypes.object.isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleShelfChange: PropTypes.func.isRequired
+};
 
 export default Bookshelf;

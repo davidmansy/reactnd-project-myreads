@@ -3,6 +3,7 @@ import SearchBooksBar from './SearchBooksBar';
 import * as BooksAPI from '../../data/BooksAPI';
 import { debounce } from 'throttle-debounce';
 import SearchBooksResults from './SearchBooksResults';
+import PropTypes from 'prop-types';
 
 const NO_CATEGORY = 'none';
 
@@ -76,6 +77,7 @@ class SearchBooks extends Component {
 
   render() {
     const { query, books, error, isLoading } = this.state;
+    const { rootPath } = this.props;
 
     return (
       <div className="search-books">
@@ -84,6 +86,7 @@ class SearchBooks extends Component {
           onHandleChange={event => {
             this.onHandleInputChange(event.target.value);
           }}
+          rootPath={rootPath}
         />
         <SearchBooksResults
           error={error}
@@ -95,5 +98,11 @@ class SearchBooks extends Component {
     );
   }
 }
+
+SearchBooks.propTypes = {
+  rootPath: PropTypes.string.isRequired,
+  handleShelfChange: PropTypes.func.isRequired,
+  booksWithCat: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default SearchBooks;

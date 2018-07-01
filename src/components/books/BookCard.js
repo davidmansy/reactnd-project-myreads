@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import ShelMoveMenu from '../common/ShelfMoveMenu';
+import PropTypes from 'prop-types';
 
-const BOOK_DETAILS_HIDE_CLASS = 'book-details-hidden';
+const BOOK_CLASS = 'book';
+const BOOK_ACTIVE_CLASS = 'book-active';
+const BOOK_DETAILS_CONTAINER_CLASS = 'book-details-container';
+const BOOK_DETAILS_HIDDEN_CONTAINER_CLASS = 'book-details-container-hidden';
 const DATA_TRANSFER_ID = 'id';
 
 class BookCard extends Component {
   state = {
-    hideBook: false,
+    hidden: false,
     active: false
   };
 
@@ -14,14 +18,14 @@ class BookCard extends Component {
     e.dataTransfer.setData(DATA_TRANSFER_ID, id);
     setTimeout(() => {
       this.setState({
-        hideBook: true
+        hidden: true
       });
     });
   };
 
   onDragEnd = e => {
     this.setState({
-      hideBook: false
+      hidden: false
     });
   };
 
@@ -42,19 +46,23 @@ class BookCard extends Component {
   };
 
   render() {
-    const { book, handleShelfChange, draggable = 'false' } = this.props;
+    const { book, handleShelfChange, draggable } = this.props;
     const thumbnail = book.imageLinks ? book.imageLinks.thumbnail : null;
     const bookCoverStyle = {
       width: 128,
       height: 193,
       backgroundImage: `url(${thumbnail})`
     };
-    const containerClass = this.state.hideBook ? BOOK_DETAILS_HIDE_CLASS : '';
-    const bookClass = this.state.active ? 'book-active' : '';
+    const containerClass = this.state.hidden
+      ? `${BOOK_DETAILS_CONTAINER_CLASS} ${BOOK_DETAILS_HIDDEN_CONTAINER_CLASS}`
+      : `${BOOK_DETAILS_CONTAINER_CLASS}`;
+    const bookClass = this.state.active
+      ? `${BOOK_CLASS} ${BOOK_ACTIVE_CLASS}`
+      : `${BOOK_CLASS}`;
 
     return (
       <div
-        className={`book ${bookClass}`}
+        className={bookClass}
         onDragStart={e => {
           this.onDragStart(e, book.id);
         }}
@@ -63,7 +71,7 @@ class BookCard extends Component {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        <div className={`book-details-container ${containerClass}`}>
+        <div className={containerClass}>
           <div className="book-top">
             <div className="book-cover" style={bookCoverStyle} />
             <div className="book-shelf-changer">
@@ -82,5 +90,15 @@ class BookCard extends Component {
     );
   }
 }
+
+BookCard.propTypes = {
+  book: PropTypes.object.isRequired,
+  handleShelfChange: PropTypes.func.isRequired,
+  draggable: PropTypes.string
+};
+
+BookCard.defaultProps = {
+  draggable: 'false'
+};
 
 export default BookCard;
