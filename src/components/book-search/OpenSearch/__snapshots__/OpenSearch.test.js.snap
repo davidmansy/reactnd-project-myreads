@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenSearch snapshots 1`] = `
+<div
+  className="open-search"
+>
+  <a
+    href="/path"
+    onClick={[Function]}
+  >
+    add
+  </a>
+</div>
+`;

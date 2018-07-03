@@ -1,10 +1,11 @@
 import React from 'react';
 import ListBooksHeader from './ListBooksHeader';
 import Bookshelves from './Bookshelves';
-import OpenSearch from '../book-search/OpenSearch';
+import OpenSearch from '../book-search/OpenSearch/OpenSearch';
 import PropTypes from 'prop-types';
 
 const BOOK_HEADER_TITLE = 'MyReads';
+const ADD_BOOK_CONTROL_LABEL = 'Add a book';
 
 function ListBooks(props) {
   const { books, handleShelfChange, isLoading, searchPath } = props;
@@ -17,7 +18,10 @@ function ListBooks(props) {
         handleShelfChange={handleShelfChange}
         isLoading={isLoading}
       />
-      <OpenSearch searchPath={searchPath} />
+      <OpenSearch
+        searchPath={searchPath}
+        addControlLabel={ADD_BOOK_CONTROL_LABEL}
+      />
     </div>
   );
 }
