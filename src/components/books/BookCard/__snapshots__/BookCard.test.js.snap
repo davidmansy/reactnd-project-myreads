@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookCard snapshots 1`] = `
+<div
+  className="book"
+  draggable="true"
+  onDragEnd={[Function]}
+  onDragStart={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="book-details-container"
+  >
+    <div
+      className="book-top"
+    >
+      <div
+        className="book-cover"
+        style={
+          Object {
+            "backgroundImage": "url(null)",
+            "height": 193,
+            "width": 128,
+          }
+        }
+      />
+      <div
+        className="book-shelf-changer"
+      >
+        <select
+          onChange={[Function]}
+          value="read"
+        >
+          <option
+            disabled={true}
+            value="move"
+          >
+            Move to...
+          </option>
+          <option
+            value="wantToRead"
+          >
+            Want to Read
+          </option>
+          <option
+            value="currentlyReading"
+          >
+            Currently Reading
+          </option>
+          <option
+            value="read"
+          >
+            Read
+          </option>
+          <option
+            value="none"
+          >
+            None
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="book-title"
+    />
+    <div
+      className="book-authors"
+    />
+  </div>
+</div>
+`;

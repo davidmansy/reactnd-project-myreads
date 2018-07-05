@@ -12,7 +12,8 @@
   },
   "devDependencies": {
     "jest-localstorage-mock": "^2.2.0",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-testing-library": "^4.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

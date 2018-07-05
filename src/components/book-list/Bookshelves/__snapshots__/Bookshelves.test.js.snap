@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bookshelves snapshots 1`] = `
+<div
+  className="list-books-content"
+>
+  <div
+    className="bookshelves"
+  >
+    <div
+      className="bookshelf"
+    >
+      <h3
+        className="bookshelf-title"
+      >
+        Want to Read
+      </h3>
+      <div
+        className="bookshelf-books"
+      >
+        <div
+          className="bookshelf-empty"
+        >
+          There are not books available in this shelf
+        </div>
+      </div>
+    </div>
+    <div
+      className="bookshelf"
+    >
+      <h3
+        className="bookshelf-title"
+      >
+        Currently Reading
+      </h3>
+      <div
+        className="bookshelf-books"
+      >
+        <div
+          className="bookshelf-empty"
+        >
+          There are not books available in this shelf
+        </div>
+      </div>
+    </div>
+    <div
+      className="bookshelf"
+    >
+      <h3
+        className="bookshelf-title"
+      >
+        Read
+      </h3>
+      <div
+        className="bookshelf-books"
+      >
+        <div
+          className="bookshelf-empty"
+        >
+          There are not books available in this shelf
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

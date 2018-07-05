@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BookCard from './BookCard';
+import BookCard from '../BookCard/BookCard';
 import PropTypes from 'prop-types';
 
 const DATA_TRANSFER_ID = 'id';

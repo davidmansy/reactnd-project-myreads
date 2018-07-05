@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBooksResults snapshots 1`] = `
+<div
+  className="search-books-results"
+  data-testid="books-results"
+>
+  
+</div>
+`;

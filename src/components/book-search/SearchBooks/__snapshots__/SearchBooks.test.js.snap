@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBooks snapshots 1`] = `
+<div
+  className="search-books"
+>
+  <div
+    className="search-books-bar"
+  >
+    <a
+      className="close-search"
+      href="/"
+      onClick={[Function]}
+    >
+      Close
+    </a>
+    <div
+      className="search-books-input-wrapper"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Search by title or author"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="search-books-results"
+    data-testid="books-results"
+  />
+</div>
+`;

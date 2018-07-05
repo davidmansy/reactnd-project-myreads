@@ -1,7 +1,7 @@
 import React from 'react';
-import data from '../../data/data.json';
-import Bookshelf from './Bookshelf';
-import Loading from '../common/Loading/index';
+import data from '../../../data/data.json';
+import Bookshelf from '../Bookshelf/Bookshelf';
+import Loading from '../../common/Loading/index';
 import PropTypes from 'prop-types';
 
 function Bookshelves(props) {

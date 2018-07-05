@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SearchBooksBar from './SearchBooksBar';
-import * as BooksAPI from '../../data/BooksAPI';
+import SearchBooksBar from '../SearchBooksBar/SearchBooksBar';
+import * as BooksAPI from '../../../data/BooksAPI';
 import { debounce } from 'throttle-debounce';
-import SearchBooksResults from './SearchBooksResults';
+import SearchBooksResults from '../SearchBooksResult/SearchBooksResults';
 import PropTypes from 'prop-types';
 
 const NO_CATEGORY = 'none';

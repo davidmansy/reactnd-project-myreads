@@ -16,15 +16,8 @@ describe('OpenSearch', () => {
       </MemoryRouter>,
       container
     );
-    ReactDOM.unmountComponentAtNode(container);
   });
-  it('displays the correct Link', () => {
-    const wrapper = shallow(
-      <OpenSearch searchPath="/path" addControlLabel="add" />
-    );
-    const link = <Link to="/path">add</Link>;
-    expect(wrapper.contains(link)).toEqual(true);
-  });
+
   it('snapshots', () => {
     const testRenderer = TestRenderer.create(
       <MemoryRouter>
@@ -33,6 +26,11 @@ describe('OpenSearch', () => {
     );
     let tree = testRenderer.toJSON();
     expect(tree).toMatchSnapshot();
-    testRenderer.unmount();
+  });
+
+  it('includes a Link with the correct attributes', () => {
+    const wrapper = shallow(<OpenSearch {...props} />);
+    const link = <Link to="/path">add</Link>;
+    expect(wrapper.contains(link)).toEqual(true);
   });
 });

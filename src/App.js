@@ -1,8 +1,8 @@
 import React from 'react';
 import * as BooksAPI from './data/BooksAPI';
 import './styles/App.css';
-import SearchBooks from './components/book-search/SearchBooks';
-import ListBooks from './components/book-list/ListBooks';
+import SearchBooks from './components/book-search/SearchBooks/SearchBooks';
+import ListBooks from './components/book-list/ListBooks/ListBooks';
 import { Route } from 'react-router-dom';
 
 const ROOT_PATH = '/';

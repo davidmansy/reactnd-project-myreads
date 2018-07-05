@@ -1,5 +1,5 @@
 import React from 'react';
-import BooksGrid from '../books/BooksGrid';
+import BooksGrid from '../../books/BooksGrid/BooksGrid';
 import PropTypes from 'prop-types';
 
 const DRAGGABLE_TRUTHY_VALUE = 'true';

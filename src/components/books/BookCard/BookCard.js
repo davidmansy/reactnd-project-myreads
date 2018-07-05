@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ShelMoveMenu from '../common/ShelfMoveMenu';
+import ShelMoveMenu from '../../common/ShelfMoveMenu';
 import PropTypes from 'prop-types';
 
 const BOOK_CLASS = 'book';

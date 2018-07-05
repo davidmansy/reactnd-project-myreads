@@ -1,7 +1,7 @@
 import React from 'react';
-import ListBooksHeader from './ListBooksHeader';
-import Bookshelves from './Bookshelves';
-import OpenSearch from '../book-search/OpenSearch/OpenSearch';
+import ListBooksHeader from '../ListBooksHeader/ListBooksHeader';
+import Bookshelves from '../Bookshelves/Bookshelves';
+import OpenSearch from '../../book-search/OpenSearch/OpenSearch';
 import PropTypes from 'prop-types';
 
 const BOOK_HEADER_TITLE = 'MyReads';
