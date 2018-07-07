@@ -1,12 +1,11 @@
 import React from 'react';
 import data from '../../../data/data.json';
 import Bookshelf from '../Bookshelf/Bookshelf';
-import Loading from '../../common/Loading/index';
+import Loading from '../../generic/Loading/index';
 import PropTypes from 'prop-types';
 
-function Bookshelves(props) {
+function Bookshelves({ books, handleShelfChange, isLoading }) {
   const shelves = data.shelves;
-  const { books, handleShelfChange, isLoading } = props;
 
   return (
     <div className="list-books-content">

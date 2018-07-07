@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function SearchBooksBar(props) {
-  const { query, onHandleChange, rootPath } = props;
-
+function SearchBooksBar({ query, onHandleChange, rootPath }) {
   return (
     <div className="search-books-bar">
       <Link className="close-search" to={rootPath}>

@@ -1,12 +1,10 @@
 import React from 'react';
 import BooksGrid from '../../books/BooksGrid/BooksGrid';
-import TechnicalError from '../../common/TechnicalError';
-import Loading from '../../common/Loading/index';
+import TechnicalError from '../../generic/TechnicalError';
+import Loading from '../../generic/Loading/index';
 import PropTypes from 'prop-types';
 
-function SearchBooksResults(props) {
-  const { error, isLoading, books, handleShelfChange } = props;
-
+function SearchBooksResults({ error, isLoading, books, handleShelfChange }) {
   return (
     <div className="search-books-results" data-testid="books-results">
       {error && <TechnicalError errorMessage={error} />}

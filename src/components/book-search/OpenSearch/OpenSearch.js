@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function OpenSearch(props) {
-  const { searchPath, addControlLabel } = props;
-
+function OpenSearch({ searchPath, addControlLabel }) {
   return (
     <div className="open-search">
       <Link to={searchPath}>{addControlLabel}</Link>

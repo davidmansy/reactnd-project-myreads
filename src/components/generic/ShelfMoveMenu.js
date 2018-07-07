@@ -2,9 +2,8 @@ import React from 'react';
 import data from '../../data/data.json';
 import PropTypes from 'prop-types';
 
-function ShelfMoveMenu(props) {
+function ShelfMoveMenu({ selectedShelf = 'none', handleChange }) {
   const shelves = data.shelves;
-  const { selectedShelf = 'none', handleChange } = props;
 
   return (
     <select value={selectedShelf} onChange={handleChange}>

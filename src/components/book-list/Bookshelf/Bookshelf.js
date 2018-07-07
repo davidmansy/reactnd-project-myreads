@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 
 const DRAGGABLE_TRUTHY_VALUE = 'true';
 
-function Bookshelf(props) {
-  const { shelf, books, handleShelfChange } = props;
+function Bookshelf({ shelf, books, handleShelfChange }) {
   const shelfBooks = books.filter(book => {
     return book.shelf === shelf.id;
   });

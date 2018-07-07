@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 const BOOK_HEADER_TITLE = 'MyReads';
 const ADD_BOOK_CONTROL_LABEL = 'Add a book';
 
-function ListBooks(props) {
-  const { books, handleShelfChange, isLoading, searchPath } = props;
-
+function ListBooks({ books, handleShelfChange, isLoading, searchPath }) {
   return (
     <div className="list-books">
       <ListBooksHeader title={BOOK_HEADER_TITLE} />

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TechnicalError(props) {
-  const { errorMessage } = props;
+function TechnicalError({ errorMessage }) {
   return (
     <div className="technical-error">
       Uh oh! Something went wrong: {errorMessage}.
